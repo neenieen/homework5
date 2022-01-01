@@ -1,27 +1,32 @@
 import 'dart:math';
 
-class Game{
-  static const maxRandom = 100;
+class Game {
+  int? maxRandom;
   int? _answer;
-  int cont = 0;
+  int _guessCount = 0;
 
-  Game(){
-    var r = Random();
-    _answer = r.nextInt(maxRandom)+1;
-    cont = 0;
-  }
-  int doGuess(int num){
-    if(num> _answer!){
-      return 1;
-    }else if(num < _answer!){
-      return -1;
+  Game(int numMax) {
+    if(numMax != null){
+      this.maxRandom = numMax;
     }else{
+      this.maxRandom = 100;
+    }
+    var r = Random();
+    _answer = r.nextInt(numMax) + 1;
+  }
+
+  int get guessCount {
+    return _guessCount;
+  }
+
+  int doGuess(int num) {
+    _guessCount++;
+    if (num > _answer!) {
+      return 1;
+    } else if (num < _answer!) {
+      return -1;
+    } else {
       return 0;
     }
   }
-  int? contGuess(){
-    cont++;
-    return cont;
-  }
-
 }
