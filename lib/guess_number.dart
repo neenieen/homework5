@@ -11,8 +11,13 @@ void main() {
     } while (input!.toLowerCase() != 'y' && input.toLowerCase() != 'n');
 
     if (input.toLowerCase() == 'n') {
+      print('\n\nYou\'ve played ${Game.guessCountList.length} games');
+      for (var i = 0; i < Game.guessCountList.length; i++) {
+        print('🚀 Game #${i + 1}: ${Game.guessCountList[i]} guesses');
+      }
       break;
     }
+
   }
 
 // end of program
@@ -50,21 +55,13 @@ void playGame() {
       print('╟────────────────────────────────────────');
     } else if (result == 0) {
       print('║ ➜ $guess is CORRECT ❤, total guesses: ${game.guessCount}');
-      var report = Results(game.guessCount);
       print('╟────────────────────────────────────────');
-
       isCorrect = true;
+      //Game.guessCountList.add(game.guessCount);
+      game.addContList();
     }
   } while (!isCorrect);
 
   print('║                 THE END                ');
   print('╚════════════════════════════════════════');
-}
-void Results(int guesscont){
-  List<int> myList = [];
-  int guess = guesscont;
-  for (var i = 0; i < myList.length; i++) {
-    print(myList[i]);
-  }
-
 }

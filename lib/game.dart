@@ -4,6 +4,7 @@ class Game {
   int? maxRandom;
   int? _answer;
   int _guessCount = 0;
+  static final List<int> guessCountList = [];
 
   Game(int numMax) {
     if(numMax != null){
@@ -17,6 +18,9 @@ class Game {
 
   int get guessCount {
     return _guessCount;
+  }
+  void addContList(){
+    guessCountList.add(_guessCount);
   }
 
   int doGuess(int num) {
